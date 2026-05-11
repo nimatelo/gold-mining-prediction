@@ -69,9 +69,11 @@ st.markdown("""
 
 @st.cache_data
 def load_data():
-    gold_df = pd.read_csv("data/gold_prices.csv")
-    geo_df = pd.read_csv("data/geological_data.csv")
-    prod_df = pd.read_csv("data/production_data.csv")
+    import os
+    base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    gold_df = pd.read_csv(os.path.join(base, "data", "gold_prices.csv"))
+    geo_df = pd.read_csv(os.path.join(base, "data", "geological_data.csv"))
+    prod_df = pd.read_csv(os.path.join(base, "data", "production_data.csv"))
     return gold_df, geo_df, prod_df
 
 @st.cache_resource
