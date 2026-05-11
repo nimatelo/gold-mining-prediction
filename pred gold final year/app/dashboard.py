@@ -80,11 +80,13 @@ def load_data():
 def load_models():
     models = {}
     try:
-        models["rf_grade"] = joblib.load("models/rf_ore_grade.pkl")
-        models["rf_viable"] = joblib.load("models/rf_viability.pkl")
-        models["xgb"] = joblib.load("models/xgb_production.pkl")
-        models["scaler_geo"] = joblib.load("models/scaler_geo.pkl")
-        models["scaler_prod"] = joblib.load("models/scaler_prod.pkl")
+import os
+base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+models["rf_grade"] = joblib.load(os.path.join(base, "models", "rf_ore_grade.pkl"))
+models["rf_viable"] = joblib.load(os.path.join(base, "models", "rf_viability.pkl"))
+models["xgb"] = joblib.load(os.path.join(base, "models", "xgb_production.pkl"))
+models["scaler_geo"] = joblib.load(os.path.join(base, "models", "scaler_geo.pkl"))
+models["scaler_prod"] = joblib.load(os.path.join(base, "models", "scaler_prod.pkl"))
     except Exception as e:
         st.warning(f"Some models not loaded: {e}")
     return models
