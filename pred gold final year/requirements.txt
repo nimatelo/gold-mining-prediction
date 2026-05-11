@@ -4,7 +4,7 @@ matplotlib
 seaborn
 scikit-learn
 xgboost
-tensorflow
 streamlit
 joblib
 plotly
+tensorflow-cpu
